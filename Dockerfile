@@ -12,6 +12,7 @@ COPY script.sh ./
 RUN chmod +x script.sh
 ENTRYPOINT ["/home/server/script.sh"]
 
+ENV ARGS=""
 VOLUME ["/home/server/main"]
 VOLUME ["/home/server/zone"]
 VOLUME ["/home/server/mods"]
