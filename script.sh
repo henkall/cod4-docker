@@ -8,6 +8,6 @@ else
     echo "cod4x18_dedrun found, not downloading anything."
 fi
 if [[ -z "${ARGS}" ]]; then
-    ARGS="+set net_port 28960 +map mp_killhouse"
+    ARGS="+set net_port 28963 +map mp_killhouse"
 fi
 su server -c ./cod4x18_dedrun "$ARGS"
