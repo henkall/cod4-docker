@@ -39,7 +39,6 @@ Note the following.
 
 | **Environement variable** | **Value** | *Optional* |
 | --- | --- | --- |
-| ARGS | Arguments to cod4x executable | Yes, see *script.sh* for the default |
 
 - The following paths are mounted with the flag `-v` (the host path can be different !):
 
