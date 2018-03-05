@@ -1,7 +1,11 @@
 FROM ubuntu
 MAINTAINER quentin.mcgaw@gmail.com
 
-ENV ARGS=""
+ENV READY=""
+ENV PORT="28960"
+ENV MODNAME=""
+ENV MAP="+map_rotate"
+ENV EXTRA=""
 
 RUN dpkg --add-architecture i386 && apt-get update
 RUN apt-get install -y nano unzip curl nasm:i386 build-essential gcc-multilib g++-multilib
