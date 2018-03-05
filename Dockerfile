@@ -1,7 +1,15 @@
 FROM ubuntu
 MAINTAINER quentin.mcgaw@gmail.com
+
+ENV READY=""
+ENV PORT="28960"
+ENV MODNAME=""
+ENV MAP="+map_rotate"
+ENV EXTRA=""
+
 RUN dpkg --add-architecture i386 && apt-get update
-RUN apt-get install -y unzip curl nasm:i386 build-essential gcc-multilib g++-multilib
+RUN apt-get install -y nano unzip curl nasm:i386 build-essential gcc-multilib g++-multilib
+
 # nasm:i386 build-essential might be useless
 RUN mkdir /home/server
 WORKDIR /home/server
@@ -9,3 +17,8 @@ RUN useradd server && chown -R server:server /home/server
 COPY script.sh ./
 RUN chmod +x script.sh
 ENTRYPOINT ["/home/server/script.sh"]
+
+VOLUME ["/home/server/main"]
+VOLUME ["/home/server/zone"]
+VOLUME ["/home/server/mods"]
+VOLUME ["/home/server/usermaps"]
