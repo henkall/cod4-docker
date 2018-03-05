@@ -16,24 +16,21 @@ Runs a Call of duty 4 Modern Warfare dedicated server in a Docker container.
 1. Make sure you have [Docker](https://docs.docker.com/install/) installed
 2. Obtaining the Docker image
     - Option 1 of 2: Docker Hub Registry
-        1. You can check my [Docker Hub page](https://hub.docker.com/r/qmcgaw/cod4/) for more information.
-            
-            [![Docker Hub page](readme/dockerhub.png)](https://hub.docker.com/r/qmcgaw/cod4/)
         
-        2. In a terminal, download the image with:
+        1. In a terminal, download the image with:
             ```bash
-            sudo docker pull qmcgaw/cod4
+            sudo docker pull henkallsn/cod4-docker
             ```
     - Option 2 of 2: Build the image
         1. Download the repository files or `git clone` them
         2. With a terminal, go in the directory where the *Dockerfile* is located
         3. Build the image with:
             ```bash
-            sudo docker build -t qmcgaw/cod4 ./
+            sudo docker build -t henkall/cod4-docker ./
             ```
 3. Launching the Docker container from the image (replace the values below):
     ```bash
-    sudo docker run -d --name=cod4 --restart=always -p 28960:28960/udp -v /cod4/main:/home/server/main -v /cod4/zone:/home/server/zone -v /cod4/mods:/home/server/mods -v /cod4/usermaps:/home/server/usermaps -e 'ARGS=+map mp_shipment' qmcgaw/cod4
+    sudo docker run -d --name=cod4 --restart=always -p 28960:28960/udp -v /cod4/main:/home/server/main -v /cod4/zone:/home/server/zone -v /cod4/mods:/home/server/mods -v /cod4/usermaps:/home/server/usermaps henkallsn/cod4-docker
     ```
 
 Note the following.
@@ -57,12 +54,8 @@ Note the following.
 You can also run the container interactively to test it with:
 
 ```bash
-sudo docker run -it --rm --name=cod4 -p 28960:28960/udp -v /cod4/main:/home/server/main -v /cod4/zone:/home/server/zone -v /cod4/mods:/home/server/mods -v /cod4/usermaps:/home/server/usermaps -e 'ARGS=+map mp_shipment' qmcgaw/cod4
+sudo docker run -it --rm --name=cod4 -p 28960:28960/udp -v /cod4/main:/home/server/main -v /cod4/zone:/home/server/zone -v /cod4/mods:/home/server/mods -v /cod4/usermaps:/home/server/usermaps henkallsn/cod4-docker
 ```
-
-### Mods
-
-Set `ARGS` to `+set fs_game mods/SERVER+map_rotate`
 
 ## Testing
 
@@ -74,5 +67,4 @@ Set `ARGS` to `+set fs_game mods/SERVER+map_rotate`
 2. Creates *server* user with its home directory
 3. Runs a shell script a startup
     1. Downloads Cod4x if necessary
-    2. Launches Cod4x server with arguments defined in optional environment variable `ARGS` with the username *server*
     
